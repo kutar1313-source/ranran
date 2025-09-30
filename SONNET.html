@@ -1,0 +1,273 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>国庆中秋双节快乐</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: 'Microsoft YaHei', sans-serif;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            min-height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            overflow: hidden;
+        }
+        
+        .container {
+            text-align: center;
+            color: white;
+            z-index: 10;
+            padding: 20px;
+        }
+        
+        .main-title {
+            font-size: 3.5em;
+            font-weight: bold;
+            margin-bottom: 20px;
+            text-shadow: 3px 3px 6px rgba(0,0,0,0.3);
+            animation: fadeInDown 1s ease-out;
+        }
+        
+        .emoji-row {
+            font-size: 4em;
+            margin: 30px 0;
+            animation: bounce 2s infinite;
+        }
+        
+        .subtitle {
+            font-size: 1.8em;
+            margin: 20px 0;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.3);
+            animation: fadeIn 1.5s ease-out;
+        }
+        
+        .wishes {
+            font-size: 1.3em;
+            line-height: 1.8;
+            max-width: 600px;
+            margin: 30px auto;
+            text-shadow: 1px 1px 3px rgba(0,0,0,0.3);
+            animation: fadeIn 2s ease-out;
+        }
+        
+        .lantern {
+            position: absolute;
+            width: 60px;
+            height: 80px;
+            background: radial-gradient(circle, #ff4444, #cc0000);
+            border-radius: 50% 50% 50% 50% / 60% 60% 40% 40%;
+            animation: swing 3s ease-in-out infinite;
+        }
+        
+        .lantern::before {
+            content: '福';
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            color: gold;
+            font-size: 24px;
+            font-weight: bold;
+        }
+        
+        .lantern::after {
+            content: '';
+            position: absolute;
+            bottom: -15px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 40px;
+            height: 15px;
+            background: gold;
+            border-radius: 50%;
+        }
+        
+        .lantern1 { top: 10%; left: 10%; animation-delay: 0s; }
+        .lantern2 { top: 15%; right: 10%; animation-delay: 0.5s; }
+        .lantern3 { bottom: 20%; left: 15%; animation-delay: 1s; }
+        .lantern4 { bottom: 15%; right: 15%; animation-delay: 1.5s; }
+        
+        .moon {
+            position: absolute;
+            top: 8%;
+            right: 8%;
+            width: 180px;
+            height: 180px;
+            background: radial-gradient(circle at 35% 35%, #fff9e6, #ffd966, #ffcc33);
+            border-radius: 50%;
+            box-shadow: 0 0 60px rgba(255, 224, 102, 0.9), 0 0 100px rgba(255, 224, 102, 0.5);
+            animation: moonGlow 3s ease-in-out infinite;
+        }
+        
+        .moon::before {
+            content: '';
+            position: absolute;
+            width: 30px;
+            height: 30px;
+            background: rgba(255, 230, 150, 0.3);
+            border-radius: 50%;
+            top: 30%;
+            left: 25%;
+        }
+        
+        .moon::after {
+            content: '';
+            position: absolute;
+            width: 20px;
+            height: 20px;
+            background: rgba(255, 230, 150, 0.2);
+            border-radius: 50%;
+            bottom: 35%;
+            right: 30%;
+        }
+        
+
+        .mooncake {
+            position: absolute;
+            width: 60px;
+            height: 60px;
+            background: radial-gradient(circle, #d4a574, #b8860b);
+            border-radius: 50%;
+            border: 3px solid #8b6914;
+            animation: rotate 10s linear infinite;
+        }
+        
+        .mooncake::before {
+            content: '中秋';
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            color: #8b6914;
+            font-size: 14px;
+            font-weight: bold;
+        }
+        
+        .mooncake1 { bottom: 15%; left: 8%; animation-delay: 0s; }
+        .mooncake2 { top: 45%; right: 5%; animation-delay: 2s; }
+        
+        .rabbit {
+            position: absolute;
+            bottom: 10%;
+            right: 10%;
+            font-size: 60px;
+            animation: bounce 2s infinite;
+        }
+        
+        .star {
+            position: absolute;
+            width: 3px;
+            height: 3px;
+            background: white;
+            border-radius: 50%;
+            animation: twinkle 2s infinite;
+        }
+        
+        @keyframes fadeInDown {
+            from {
+                opacity: 0;
+                transform: translateY(-50px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+        
+        @keyframes fadeIn {
+            from { opacity: 0; }
+            to { opacity: 1; }
+        }
+        
+        @keyframes bounce {
+            0%, 100% { transform: translateY(0); }
+            50% { transform: translateY(-20px); }
+        }
+        
+        @keyframes swing {
+            0%, 100% { transform: rotate(-5deg); }
+            50% { transform: rotate(5deg); }
+        }
+        
+        @keyframes moonGlow {
+            0%, 100% { 
+                box-shadow: 0 0 60px rgba(255, 224, 102, 0.9), 0 0 100px rgba(255, 224, 102, 0.5);
+                transform: scale(1);
+            }
+            50% { 
+                box-shadow: 0 0 80px rgba(255, 224, 102, 1), 0 0 120px rgba(255, 224, 102, 0.7);
+                transform: scale(1.05);
+            }
+        }
+        
+        @keyframes rotate {
+            from { transform: rotate(0deg); }
+            to { transform: rotate(360deg); }
+        }
+        
+        @keyframes twinkle {
+            0%, 100% { opacity: 0.3; }
+            50% { opacity: 1; }
+        }
+        
+        @media (max-width: 768px) {
+            .main-title { font-size: 2.5em; }
+            .emoji-row { font-size: 3em; }
+            .subtitle { font-size: 1.4em; }
+            .wishes { font-size: 1.1em; }
+        }
+    </style>
+</head>
+<body>
+    <div class="lantern lantern1"></div>
+    <div class="lantern lantern2"></div>
+    <div class="lantern lantern3"></div>
+    <div class="lantern lantern4"></div>
+    
+    <div class="moon"></div>
+    <div class="mooncake mooncake1"></div>
+    <div class="mooncake mooncake2"></div>
+    <div class="rabbit">🐰</div>
+    
+    <div class="container">
+        <h1 class="main-title">国庆中秋双节同庆</h1>
+        
+        <div class="emoji-row">
+            🎉 🏮 🌕 🥮 🇨🇳
+        </div>
+        
+        <p class="subtitle">祝大家假期快乐！</p>
+        
+        <div class="wishes">
+            <p>🌟 愿你花好月圆人团圆</p>
+            <p>🎈 愿你国泰民安乐逍遥</p>
+            <p>💖 愿你阖家欢乐福满堂</p>
+            <p>🌙 愿你月圆梦圆事事圆</p>
+        </div>
+        
+        <div style="margin-top: 40px; font-size: 0.9em; opacity: 0.9;">
+            <p>Made with ❤️ by Claude Sonnet 4.5 + 哈基然</p>
+        </div>
+    </div>
+    
+    <script>
+        // 创建随机星星
+        for (let i = 0; i < 30; i++) {
+            const star = document.createElement('div');
+            star.className = 'star';
+            star.style.left = Math.random() * 100 + '%';
+            star.style.top = Math.random() * 100 + '%';
+            star.style.animationDelay = Math.random() * 2 + 's';
+            document.body.appendChild(star);
+        }
+    </script>
+</body>
+</html>
